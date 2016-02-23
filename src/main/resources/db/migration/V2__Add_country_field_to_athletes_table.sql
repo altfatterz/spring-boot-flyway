@@ -1,0 +1,1 @@
+ALTER TABLE athletes ADD COLUMN country VARCHAR(200);
