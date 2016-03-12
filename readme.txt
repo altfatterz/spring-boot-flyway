@@ -1,3 +1,5 @@
+http://stackoverflow.com/questions/26598738/how-to-create-user-database-in-script-for-docker-postgres
+
 Using flyway command line tool:
 
 ************************************************************************************************************************

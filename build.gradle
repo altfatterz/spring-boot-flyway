@@ -18,6 +18,14 @@ jar {
 	version = '0.0.1-SNAPSHOT'
 }
 
+// copy the DockerFile into the build/libs folder
+build.doLast() {
+    copy {
+        from 'src/main/docker'
+        into 'build/libs'
+    }
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
