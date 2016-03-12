@@ -1,4 +1,4 @@
-package com.altfatterz;
+package com.zoltanaltfatter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +20,4 @@ public class SpringBootFlywayApplicationTests {
 	public void testDefaultSettings() throws Exception {
 		assertEquals(new Integer(2), this.template.queryForObject("SELECT COUNT(*) from athletes", Integer.class));
 	}
-
-
 }

@@ -1,5 +1,6 @@
-package com.altfatterz;
+package com.zoltanaltfatter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.repository.CrudRepository;
@@ -36,6 +37,7 @@ class Athlete {
 	private String lastName;
 
 	// optional
+	@JsonIgnore
 	private String country;
 
 	// for JPA to work
@@ -45,11 +47,6 @@ class Athlete {
 	public Athlete(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Athlete[id=%d, firstName='%s', lastName='%s'", id, firstName, lastName);
 	}
 
 	public long getId() {
@@ -75,5 +72,4 @@ class Athlete {
 
 @RepositoryRestResource(collectionResourceRel = "athletes", path = "/athletes")
 interface AthleteRepository extends CrudRepository<Athlete, Long> {
-
 }
