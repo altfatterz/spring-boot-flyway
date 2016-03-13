@@ -24,6 +24,10 @@ build.doLast() {
         from 'src/main/docker'
         into 'build/libs'
     }
+	copy {
+		from 'src/main/db'
+		into 'build/db'
+	}
 }
 
 sourceCompatibility = 1.8

@@ -1,15 +1,16 @@
 version: '2'
 services:
   postgres:
-    container_name: athletes-datastore
     image: postgres:9.5.1
+    container_name: athletes-datastore
+    build : build/db
     environment:
       POSTGRES_USER: docker
       POSTGRES_DB: mydb
   web:
+    image: athletes-service-image
     container_name: athletes-service
     build: build/libs
-    image: athletes-service-image
     depends_on:
       - postgres # athletes-datastore will be started before the athletes-service
     ports:
