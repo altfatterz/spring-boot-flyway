@@ -1,14 +1,11 @@
 version: '2'
 services:
   postgres:
-    image: postgres:9.5.1
+    image: athletes-datastore-image
     container_name: athletes-datastore
     build: build/db
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: docker
-      POSTGRES_DB: mydb
   web:
     image: athletes-service-image
     container_name: athletes-service
@@ -19,5 +16,3 @@ services:
       - "8080:8080"
     links:
       - postgres
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
