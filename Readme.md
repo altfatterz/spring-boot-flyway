@@ -1,9 +1,10 @@
-Database migration with flyway
+Database migration with [Flyway](https://flywaydb.org/)
 
 Example for blog post: http://zoltanaltfatter.com/2016/03/14/database-migration-with-flyway
 
 ```
-docker-compose up
+$ ./gradlew clean build
+$ docker-compose up
 ```
 
 In the logs it is visible that the database changes are applied
