@@ -19,62 +19,64 @@ import java.util.List;
  */
 public class SpringBootFlywayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootFlywayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootFlywayApplication.class, args);
+    }
 }
 
 @Entity
 @Table(name = "athletes")
 class Athlete {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String firstName;
+    @Column(nullable = false)
+    private String firstName;
 
-	@Column(nullable = false)
-	private String lastName;
+    @Column(nullable = false)
+    private String lastName;
 
-	// optional
-	@JsonIgnore
-	private String country;
+    // optional
+    private String country;
 
-	// for JPA to work
-	protected Athlete() {
-	}
+    // for JPA to work
+    protected Athlete() {
+    }
 
-	public Athlete(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public long getId() {
-		return id;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }
 
 @RepositoryRestResource(collectionResourceRel = "athletes", path = "/athletes")
 interface AthleteRepository extends CrudRepository<Athlete, Long> {
 
-	List<Athlete> findByFirstNameIgnoreCase(@Param("firstName") String firstName);
+    List<Athlete> findByFirstNameIgnoreCase(@Param("firstName") String firstName);
 
 }
