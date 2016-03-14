@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import javax.persistence.*;
+import java.util.List;
 
 @SpringBootApplication
 
@@ -72,4 +74,7 @@ class Athlete {
 
 @RepositoryRestResource(collectionResourceRel = "athletes", path = "/athletes")
 interface AthleteRepository extends CrudRepository<Athlete, Long> {
+
+	List<Athlete> findByFirstNameIgnoreCase(@Param("firstName") String firstName);
+
 }
